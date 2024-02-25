@@ -2,12 +2,15 @@ from PIL import Image
 from PIL import ImageFilter
 from PIL import ImageEnhance
 
+
+
 def im(image_name):
-    return(
-        str(variable.size) + '\n' +
-        str(variable.formate) + '\n' +
-        str(variable.mode)
-    )
+    with Image.open(image_name) as variable:   
+        return(
+            str(variable.size) + '\n' +
+            str(variable.format) + '\n' +
+            str(variable.mode)
+        )
 
 def mbw(line_edit):
     image_name = line_edit.text()
@@ -36,8 +39,10 @@ def emboss(line_edit):
 def flip(line_edit):
     image_name = line_edit.text()
     with Image.open(image_name) as variable:
-        flip_image = variable.transpose(Image.FLIP_LEFT_RIGHT)
-        flip_image.show()
+        rotate_image = variable.transpose(Image.ROTATE_270)
+        rotate_image.show()
+
+    
 
     
 
